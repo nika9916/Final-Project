@@ -21,6 +21,7 @@
   --fw-semi-bold: 600;
   --fw-bold: 700;
   --fw-extra-bold: 800;
+  --size-12: 0.75rem;
   --size-13: 0.813rem;
   --size-15: 0.938rem;
   --size-17: 1.063rem;
@@ -37,73 +38,15 @@
   --size-71-6: 4.475rem;
 }
 
-
-/* h1 {
-  font-size: var(--size-60);
-  line-height: var(--size-71-6);
-  font-weight: var(--fw-bold);
-  font-family: "SFPPro" , sans-serif;
-}
-
-h2 {
-  font-size: var(--size-40);
-  line-height: var(--size-47-7);
-  font-weight: var(--fw-bold);
-  font-family: "SFPPro" , sans-serif;
-}
-
-h3 {
-  font-size: var(--size-30);
-  line-height: var(--size-35-8);
-  font-weight: var(--fw-bold);
-  font-family: "SFPPro" , sans-serif;
-}
-
-h4 {
-  font-size: var(--size-24);
-  line-height: var(--size-31-2);
-  font-weight: var(--fw-medium);
-  font-family: "SFPPro" , sans-serif;
-} */
-
-.ada1 {
-  font-size: var(--size-20);
-  line-height: var(--size-28);
-  font-weight: var(--fw-regular);
-  font-family: "SFPPro" , sans-serif;
-}
-
-.ada {
+.title {
   font-size: var(--size-17);
   line-height: var(--size-22-1);
-  font-weight: var(--fw-regular);
+  font-weight: var(--fw-bold);
   font-family: "SFPPro" , sans-serif;
+  color: var(--primary-color);
 }
 
-.sidebar-header {
-  font-size: var(--size-15);
-  line-height: var(--size-20);
-  font-weight: var(--fw-regular);
-  font-family: "SFPPro" , sans-serif;
-}
-
-h5 {
-  font-size: var(--size-15);
-  line-height: var(--size-20);
-  font-weight: var(--fw-regular);
-  font-family: "SFPPro" , sans-serif;
-}
-
-h6 {
-  font-size: var(--size-13);
-  font-weight: var(--fw-regular);
-  line-height: var(--size-17);
-  font-family: "SFPPro" , sans-serif;
-}
-
-
-
-.grid-container {
+/* .grid-container {
   display: grid;
   grid-template-areas: 
   "aside head"
@@ -112,8 +55,7 @@ h6 {
   grid-template-rows: 56px 926px;
   column-gap: 23px;
   row-gap: 40px;
-}
-
+} */
 
 .sidebar{
   grid-area: aside;
@@ -140,7 +82,7 @@ h6 {
 .sidebar .logo-details .logo_name{
   color: var(--primary-color);
   font-size: 30px;
-  font-weight: 600;
+  font-weight: var(--fw-semi-bold);
   opacity: 0;
   transition: all 0.5s ease;
 }
@@ -153,7 +95,6 @@ h6 {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  font-size: 22px;
   transition: all 0.4s ease;
   font-size: 23px;
   text-align: center;
@@ -172,16 +113,17 @@ h6 {
   line-height: 60px;
 }
 
-
 .sidebar .nav-list{
   margin-top: 20px;
   height: 100%;
 }
-.sidebar li{
+
+.sidebar .nav-list li{
   position: relative;
   margin: 8px 0;
   list-style: none;
 }
+
 .sidebar li .tooltip{
   position: absolute;
   top: -20px;
@@ -203,7 +145,6 @@ h6 {
   transform: translateY(-50%);
 }
 
-
 .sidebar li a{
   display: flex;
   height: 100%;
@@ -219,12 +160,13 @@ h6 {
 .sidebar li a .links_name{
   color: #fff;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: var(--fw-regular);
   white-space: nowrap;
-  opacity: 0;
   pointer-events: none;
   transition: 0.4s;
+  opacity: 0;
 }
+
 .sidebar.open li a .links_name{
   opacity: 1;
   pointer-events: auto;
@@ -270,7 +212,7 @@ header nav .burger {
 header nav .burger > div {
   width: 35px;
   height: 5px;
-  background-color: black;
+  background-color: #FFF;
   border-radius: 10px;
 }
 
@@ -280,14 +222,13 @@ header nav form input::placeholder{
 }
 
 header nav form {
-  margin-left: 17.75rem;
+  max-width: 1000px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
 }
 
-@media (max-width:900px) {
-  html {
-    font-size: 10px;
-  }
-}
+
 
 header nav form input{
   width: 25rem;
@@ -301,13 +242,6 @@ header nav form input{
 }
 
 
-header nav .nav-wrapper li a {
-  list-style: none;
-  text-decoration: none;
-  font-size: 14px;
-  color: var(--text-color);
-}
-
 header nav .user{
   display: flex;
   gap: 41px;
@@ -319,10 +253,11 @@ header nav .user{
 
 
 header nav .user .user-profile {
-  padding: 15px 20px;
+  padding: 15px;
   background-color: aqua;
   border-radius: 50%;
   border: 1px solid rebeccapurple;
+
 
 }
 
@@ -349,50 +284,6 @@ header{
 }
 
 
-@media (max-width: 768px) {
-  header nav {
-      flex-direction: column;
-      align-items: flex-start;
-  }
-
-  header nav .nav-wrapper {
-      display: none;
-  }
-
-  header nav .nav-wrapper.nav-links-burger {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 1rem;
-  }   
-
-  header nav .user {
-      display: none;
-  }
-
-  header nav .burger {
-      position: absolute;
-      display: block;
-      top: 3rem;
-      right: 1rem;
-  }
-
-  header nav .nav-wrapper li{
-      text-align: center;
-      width: 100%;
-      padding: 1rem;
-  }
-
-  header nav .nav-wrapper li:hover {
-      background-color: black;
-  }
-
-  header nav .nav-wrapper li a:hover {
-      color: var(--white-color);
-  }
-}
 
 
 /* main */
@@ -410,7 +301,7 @@ main {
 .filter-container {
   position: relative;
   overflow: hidden;
-  padding: 0 100px;
+  padding-inline: 75px;
 }
 
 
@@ -437,8 +328,6 @@ main {
 .filter-container ul li a:hover {
   color: var(--primary-color);
   box-shadow: inset 120px 0 0 0 #54b3d6;
-  /* box-shadow: inset 120px 0 0 0 #54b3d6; */
-/* inherit color or bluu; */
 }
 
 .filter-container .icon{
@@ -452,12 +341,12 @@ main {
 
 .icon:first-child {
   left: 0;
-  background: linear-gradient(90deg, rgb(64, 99, 152) 60%, transparent);
+  background: linear-gradient(90deg, rgb(44, 44, 71) 60%, transparent);
 }
 
 .icon:last-child {
   right: 0;
-  background: linear-gradient(-90deg, rgb(64, 99, 152) 60%, transparent);
+  background: linear-gradient(-90deg, rgb(44, 44, 71)  60%, transparent);
   justify-content: center;
 }
 
@@ -469,13 +358,26 @@ main {
   margin-left: 30px;
 }
 
+.search-box {
+  position: relative;
+}
 
+
+.search-btn {
+  background-color: inherit;
+  position: absolute;
+  border: none;
+  top: 30%;
+  right: 30%;
+  cursor: pointer;
+
+}
 
 .icon i{
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgb(111, 108, 108);
+  background-color: #4a6975;
     text-align: center;
   line-height: 40px;
   cursor: pointer;
@@ -489,7 +391,6 @@ main {
 
 .video-container{
   padding-top: 32px;
-  padding-left: 56px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 42px 16px;
@@ -534,29 +435,72 @@ main {
   flex-direction: column;
 }
 
-.title {
-  font-size: 17px;
-  line-height: 21px;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
 .channel-name {
   color: rgba(255, 255, 255, 0.6);
-  font-size: 12px;
-  line-height: 22px;
-  font-weight: bold;
+  font-size: var(--size-12);
+  line-height: var(--size-22-1);  
+  font-weight: var(--fw-bold);
 }
 
-@media (max-width: 1340px) {
+.horizontal-carousel {
+  overflow: visible;
+}
+
+.video-container > a {
+  display: flex;
+  justify-content: center;
+}
+
+/* media */
+
+
+
+@media (max-width: 1270px) {
   .video-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 940px) {
+@media (max-width: 1030px) {
+  .video-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 880px) {
   .video-container {
     grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+  }
+  
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header nav .nav-wrapper {
+      display: none;
+  }
+
+  header nav .nav-wrapper.nav-links-burger {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 1rem;
+  }   
+
+  header nav .burger {
+      position: absolute;
+      display: block;
+      top: 2rem;
+      right: 1rem;
+  }
+  
+  header nav .burger div {
+    margin-top: 4px;
   }
 }
 
@@ -564,18 +508,32 @@ main {
   .video {
     max-width: 250px;
     width: 100%;
+    overflow: hidden;
+  }
+  html {
+    font-size: 12px;
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 410px) {
   .video {
-    max-width: 150px;
+    max-width: 170px;
     width: 100%;
-    height: 70px;
+    margin-top: 40px;
+  }
+  .video div div p {
+    display: none;
+  }
+
+  .filter-container .icon {
+    display: none;
   }
 }
 
-.horizontal-carousel {
-  overflow: visible;
+.burger-2 {
+  max-width: 70%;
 }
 
+.burger-3 {
+  max-width: 50%;
+}
