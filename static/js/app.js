@@ -5,8 +5,6 @@ const navBurger = document.querySelector(".burger");
 const navBurgerDiv1 = document.querySelector(".burger .burger-2-div");
 const navBurgerDiv2 = document.querySelector(".burger .burger-3-div");
 
-
-
 function navToggler() {
     navWrapper.classList.toggle("nav-links-burger");
     navBurger.style.rotate = "180deg"
@@ -49,12 +47,11 @@ fetch(video_http + new URLSearchParams({
     key: api_key,
     part: 'snippet',
     chart: 'mostPopular',
-    maxResults: 100,
+    maxResults: 10,
     regionCode: 'ge',
 }))
 .then(res => res.json())
 .then(data => {
-    console.log(data)
     data.items.forEach(item => {
         getChannelIcon(item);
     })
@@ -65,20 +62,19 @@ const getChannelIcon = (video_data) => {
     fetch(channel_http + new URLSearchParams({
         key: api_key,
         part: 'snippet',
-        id: video_data.snippet.channelId
+        id: video_data.snippet.channelId,
     }))
     .then(res => res.json())
-    .then(data => {
+    .then(data => { 
         video_data.channelThumbnail = data.items[0].snippet.thumbnails.default.url;
         makeVideoCard(video_data);
     })
 }
-
 const makeVideoCard = (data) => { 
     videoCardContainer.innerHTML += `
-    <a href="https://www.youtube.com/watch?v=${data.id}">
+    <a class="video-player" >
         <div class="video">
-            <img src="${data.snippet.thumbnails.high.url}" class="thumbnail" alt="">
+            <img src="${data.snippet.thumbnails.high.url}" class="thumbnail" alt="" id=${data.id}>
             <div class="content">
                 <img src="${data.channelThumbnail}" class="channel-icon" alt="">
                 <div class="info">
@@ -88,8 +84,66 @@ const makeVideoCard = (data) => {
             </div>
         </div>
     </a>
-    `;
-}
+    `
+
+    const videoPlay = document.querySelectorAll(".video-player")
+    for (let element of videoPlay) {
+        element.addEventListener("click", idNuber)
+        function idNuber (event) {
+            var dataId = event.target.id;
+            console.log(dataId)
+        }
+    }
+};
+
+    // for (let element of videoPlay) {
+    //     element.addEventListener("click", function(event) {
+    //         const dataId = data.id;
+    //             console.log(dataId)
+    //         })
+    // }
+
+        // videoPlay.addEventListener("click", function() {
+        //     const dataId = data.id;
+        //         console.log(dataId)
+        // })
+
+
+    // videoPlay.addEventListener("click", console.log("nika"))
+
+
+//     <div class="video-none">
+//     <iframe id="video-iframe" width="556" height="538" src="https://www.youtube.com/embed/${data.id}" title="უტდ - Jeep® Grand Cherokee - ტალახის აბაზანებში!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+// </div>
+
+    // const videoBtn = document.querySelector(".video-player")
+    // const videoNone = document.querySelector(".video-none")
+
+    // videoBtn.addEventListener('click', () => {
+    //     videoNone.classList.toggle("video-block")
+    // })
+
+
+
+// card video container
+
+// const videoPlayerContainer = document.querySelector('.video-player-container');
+
+// videoPlayerContainer.style.background = "red";
+
+
+// const    Player = (data) => {
+//     videoPlayerContainer.innerHTML += `
+//     <div>
+//         <h2>Nika</h2>
+//         <iframe id="video-iframe" width="556" height="538" src="https://www.youtube.com/embed/${data.id}" title="უტდ - Jeep® Grand Cherokee - ტალახის აბაზანებში!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+//     </div>
+//     `;
+// }
+
+
+
+
 
 const searchInput = document.querySelector('.search-bar');
 const searchBtn = document.querySelector('.search-btn');
@@ -115,3 +169,8 @@ arrowIcons.forEach(icon => {
 
 
 // load more
+const person = 43;
+
+
+export default person;
+
